@@ -1,0 +1,37 @@
+  <html>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    function room() {
+      var room = window.location.href.substring(window.location.href.lastIndexOf("/")+1);
+      if (room=="") room = "general";
+      return "/api/chat/"+room;
+    }
+
+    function updateChat() {
+      $.get(room(), function(data) {
+        $("#chatbox").text(data);
+        window.setTimeout(updateChat, 1500);
+      })
+    }
+
+    function sendmessage() {
+      $.post(room(), $("#inform").serialize() );
+    }
+
+    $(document).ready(function() {
+      $("#chatbox").text("Loading chat...");
+      $("#sendBtn").click(sendmessage)
+      window.setTimeout(updateChat, 1500);
+    });
+
+  </script>
+  <body>
+    <form id="inform" action="/api/chat" method="POST">
+      Name:<input name="username" type=text>
+      Message:<input name="msg" type=text>
+      <input id="sendBtn" type="button" value="send">
+    </form>
+    <pre id="chatbox">Loading...</pre>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"9024aadddca40dab","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.1.0","token":"a277335336dc427bbb3bf6f09bed1747"}' crossorigin="anonymous"></script>
+<input type='hidden' name='ntsp_block_page' value='https://safepage.etrog.net.il/?a=block/block1&level=5&url=http%3A%2F%2Fdeveleap.academyocean.com%2Fdownload-file%2F24a220b5-8433-43ac-a2b3-08035c5b91c1&user_id=647100&sigid=c16c27353cd93b0767e6275fa7b5a802546bfebc47098b50ba00db697bfa1be9&startm=202409&keyword=&referer=https%3A%2F%2Fdeveleap.academyocean.com%2Fcourse%2Fpython-copy%2Flesson%2Ftask-2-chat-pairs&category=89&cause=Quiltingjs'/><script src='/jsQuilting/server/etAddOn.js?v=1&k=23898278c1850f536d688db3614128a0' type='text/javascript' defer></script></body>
+</html>
