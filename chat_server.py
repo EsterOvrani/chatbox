@@ -75,4 +75,4 @@ def post_message(room):
 
 # Run the app if this script is executed directly
 if __name__ == '__main__':
-    app.run()  # Start the Flask development server
+    app.run(debug=True, host='0.0.0.0')
