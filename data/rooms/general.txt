@@ -1,2 +1,19 @@
 [2025-01-15 21:20:11] rfd: frfr
 [2025-01-15 21:21:26] 1234: frfr
+
+
+
+Werkzeug==2.3.3
+Flask==2.3.2
+SQLAlchemy==2.0.20
+mysql-connector-python==8.1.0
+Flask-SQLAlchemy==3.1.0
+
+
+blinker==1.9.0
+click==8.1.8
+Flask==3.1.0
+itsdangerous==2.2.0
+Jinja2==3.1.5
+MarkupSafe==3.0.2
+Werkzeug==3.1.3
